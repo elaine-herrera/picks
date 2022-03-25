@@ -9,7 +9,8 @@ import SwiftUI
 
 class PicksRouter {
     func makeVideoView(for video: Video, model: DataModel) -> some View {
-        return EmptyView()
+        let presenter = VideoPresenter(interactor: VideoInteractor(video: video, model: model))
+        return VideoView(presenter: presenter)
     }
 }
 

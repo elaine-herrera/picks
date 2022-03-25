@@ -9,10 +9,11 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @EnvironmentObject var model: DataModel
     
     var body: some View {
         TabView {
-            ProgressView()
+            PicksView(presenter: PicksPresenter(interactor: PicksInteractor(model: model)))
             .tabItem {
                 Label("Picks", systemImage: "list.bullet")
             }
