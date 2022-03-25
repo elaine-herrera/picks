@@ -14,7 +14,6 @@
 		F300219327EE40DB00D4A9FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300219227EE40DB00D4A9FD /* ContentView.swift */; };
 		F300219527EE40DD00D4A9FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F300219427EE40DD00D4A9FD /* Assets.xcassets */; };
 		F300219827EE40DD00D4A9FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F300219727EE40DD00D4A9FD /* Preview Assets.xcassets */; };
-		F300219A27EE40DD00D4A9FD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300219927EE40DD00D4A9FD /* Persistence.swift */; };
 		F300219D27EE40DE00D4A9FD /* picks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F300219B27EE40DE00D4A9FD /* picks.xcdatamodeld */; };
 		F30021A727EE40DE00D4A9FD /* picksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021A627EE40DE00D4A9FD /* picksTests.swift */; };
 		F30021B127EE40DE00D4A9FD /* picksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021B027EE40DE00D4A9FD /* picksUITests.swift */; };
@@ -54,7 +53,6 @@
 		F300219227EE40DB00D4A9FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F300219427EE40DD00D4A9FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F300219727EE40DD00D4A9FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F300219927EE40DD00D4A9FD /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F300219C27EE40DE00D4A9FD /* picks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = picks.xcdatamodel; sourceTree = "<group>"; };
 		F30021A227EE40DE00D4A9FD /* picksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = picksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30021A627EE40DE00D4A9FD /* picksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = picksTests.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				012A5DFF283DACB1336155CA /* Pods-picksUITests.debug.xcconfig */,
 				D8C649BF5328765CE9AFC196 /* Pods-picksUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -146,7 +143,6 @@
 				F300219027EE40DB00D4A9FD /* picksApp.swift */,
 				F300219227EE40DB00D4A9FD /* ContentView.swift */,
 				F300219427EE40DD00D4A9FD /* Assets.xcassets */,
-				F300219927EE40DD00D4A9FD /* Persistence.swift */,
 				F300219B27EE40DE00D4A9FD /* picks.xcdatamodeld */,
 				F300219627EE40DD00D4A9FD /* Preview Content */,
 			);
@@ -399,7 +395,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F300219D27EE40DE00D4A9FD /* picks.xcdatamodeld in Sources */,
-				F300219A27EE40DD00D4A9FD /* Persistence.swift in Sources */,
 				F300219327EE40DB00D4A9FD /* ContentView.swift in Sources */,
 				F300219127EE40DB00D4A9FD /* picksApp.swift in Sources */,
 			);
