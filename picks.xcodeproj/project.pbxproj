@@ -18,6 +18,10 @@
 		F30021A727EE40DE00D4A9FD /* picksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021A627EE40DE00D4A9FD /* picksTests.swift */; };
 		F30021B127EE40DE00D4A9FD /* picksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021B027EE40DE00D4A9FD /* picksUITests.swift */; };
 		F30021B327EE40DE00D4A9FD /* picksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021B227EE40DE00D4A9FD /* picksUITestsLaunchTests.swift */; };
+		F30021C227EE484200D4A9FD /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021C127EE484200D4A9FD /* Metadata.swift */; };
+		F30021C427EE484E00D4A9FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021C327EE484E00D4A9FD /* User.swift */; };
+		F30021C627EE485800D4A9FD /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021C527EE485800D4A9FD /* Video.swift */; };
+		F30021C827EE489200D4A9FD /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021C727EE489100D4A9FD /* Picture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,10 @@
 		F30021AC27EE40DE00D4A9FD /* picksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = picksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30021B027EE40DE00D4A9FD /* picksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = picksUITests.swift; sourceTree = "<group>"; };
 		F30021B227EE40DE00D4A9FD /* picksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = picksUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F30021C127EE484200D4A9FD /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
+		F30021C327EE484E00D4A9FD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F30021C527EE485800D4A9FD /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		F30021C727EE489100D4A9FD /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		FF297C8F4C307A1A026962F7 /* Pods_picksUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_picksUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,10 +148,11 @@
 		F300218F27EE40DB00D4A9FD /* picks */ = {
 			isa = PBXGroup;
 			children = (
+				F30021C027EE480500D4A9FD /* Entities */,
+				F30021BF27EE47EC00D4A9FD /* Persistence */,
 				F300219027EE40DB00D4A9FD /* picksApp.swift */,
 				F300219227EE40DB00D4A9FD /* ContentView.swift */,
 				F300219427EE40DD00D4A9FD /* Assets.xcassets */,
-				F300219B27EE40DE00D4A9FD /* picks.xcdatamodeld */,
 				F300219627EE40DD00D4A9FD /* Preview Content */,
 			);
 			path = picks;
@@ -172,6 +181,25 @@
 				F30021B227EE40DE00D4A9FD /* picksUITestsLaunchTests.swift */,
 			);
 			path = picksUITests;
+			sourceTree = "<group>";
+		};
+		F30021BF27EE47EC00D4A9FD /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				F300219B27EE40DE00D4A9FD /* picks.xcdatamodeld */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		F30021C027EE480500D4A9FD /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F30021C127EE484200D4A9FD /* Metadata.swift */,
+				F30021C727EE489100D4A9FD /* Picture.swift */,
+				F30021C327EE484E00D4A9FD /* User.swift */,
+				F30021C527EE485800D4A9FD /* Video.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,7 +423,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F300219D27EE40DE00D4A9FD /* picks.xcdatamodeld in Sources */,
+				F30021C627EE485800D4A9FD /* Video.swift in Sources */,
 				F300219327EE40DB00D4A9FD /* ContentView.swift in Sources */,
+				F30021C227EE484200D4A9FD /* Metadata.swift in Sources */,
+				F30021C827EE489200D4A9FD /* Picture.swift in Sources */,
+				F30021C427EE484E00D4A9FD /* User.swift in Sources */,
 				F300219127EE40DB00D4A9FD /* picksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
