@@ -9,10 +9,11 @@ import SwiftUI
 
 @main
 struct picksApp: App {
-
+    let model = DataModel(dataSource: VimeoDataSource())
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(model)
         }
     }
 }
