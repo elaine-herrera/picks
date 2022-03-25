@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>oauthEndpoint</key>
+	<string>https://api.vimeo.com/oauth/authorize/client</string>
+	<key>clientId</key>
+	<string>9f806d63527b51d590b938c8f5e947edeeda4e5c</string>
+	<key>clientSecret</key>
+	<string>5VSvV/y4kkWYOAQXSFFlXYe7HkDkvl5KGhpt+sLiuzLvfHHswzDyDi6zN1fNnA9x19P1rUyYqM8YJ0bkx1T7VZ4IVYaGjreDbnRYJz/QBkQzVsaXSJVB8mQBgLjAWXRd</string>
+</dict>
+</plist>
