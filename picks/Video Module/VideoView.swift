@@ -43,7 +43,7 @@ struct VideoView: View {
                 }
             }
             presenter.linkBuilder(for: video){
-                //VideoFooterView(presenter: presenter)
+                VideoFooterView(presenter: presenter)
             }
         }
         .background(Color(UIColor.systemBackground))
