@@ -32,7 +32,9 @@ struct VideoFooterView: View {
                         .shadow(color: .gray, radius: 2, x: 0, y: 0)
                     VStack(alignment: .leading){
                         Text("By \(video.user?.name ?? "Unknown") ")
+                            .fontWeight(.semibold)
                         Text("\(Date().offset(from: video.releaseTime!)) - \(video.metadata.connections.likes.total.formatToViews()) Likes")
+                            .fontWeight(.light)
                     }
                     Spacer()
                     favoriteButton(video: video)

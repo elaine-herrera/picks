@@ -11,7 +11,7 @@ struct LoadingView: View {
     @State var show = false
     let height = (UIScreen.main.bounds.size.width * 360) / 640
     var center = UIScreen.main.bounds.width
-    let colors = [ Color.clear, Color.white,  Color.clear]
+    let colors = [ Color.clear, Color.black,  Color.clear]
     
     var body: some View {
         ZStack{
