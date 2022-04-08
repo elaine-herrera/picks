@@ -9,6 +9,7 @@ import SwiftUI
 
 class VideoRouter {
     func makeVideoDetailView(for video: Video, model: DataModel) -> some View {
-        return EmptyView()
+        let presenter = VideoDetailsPresenter(interactor: VideoDetailsInteractor(video: video, model: model))
+        return VideoDetailsView(presenter: presenter)
     }
 }

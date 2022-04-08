@@ -21,7 +21,7 @@ struct ContentView: View {
             .tabItem {
                 Label("Settings", systemImage: "gear")
             }
-            ProgressView()
+            FavoritesView(presenter: FavoritesPresenter(interactor: FavoritesInteractor(model: model)))
             .tabItem {
                Label("Favorites", systemImage: "star")
             }

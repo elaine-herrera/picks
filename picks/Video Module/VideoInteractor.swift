@@ -17,14 +17,14 @@ class VideoInteractor {
     }
     
     func saveToFavorites(){
-        
+        model.save(video: video)
     }
     
     func removeFromFavorites(){
-        
+        model.remove(video: video)
     }
     
     func isFavorite() -> Bool {
-        return false
+        return model.favorites.contains(where: { $0.id == video.id })
     }
 }

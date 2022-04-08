@@ -37,7 +37,7 @@ struct VideoFooterView: View {
                             .fontWeight(.light)
                     }
                     Spacer()
-                    favoriteButton(video: video)
+                    minimalistFavButton(video: video)
                 }
                 .font(.subheadline)
                 .lineLimit(1)
@@ -47,6 +47,34 @@ struct VideoFooterView: View {
         }
         .padding([.leading, .trailing], 8)
         .padding([.top, .bottom], 16)
+    }
+    
+    func menuFavButton() -> some View {
+        Menu {
+            Button("View details", action: {})
+            Button("Save to Favorites", action: {})
+        } label: {
+            Image(systemName: "plus")
+        }
+    }
+    
+    func minimalistFavButton(video: Video) -> some View {
+        Group {
+            let isFavorite = presenter.isFavorite()
+            Button(action: {
+                if isFavorite {
+                    presenter.removeFromFavorites()
+                }
+                else {
+                    presenter.saveToFavorites()
+                }
+            }){
+                HStack{
+                    Image(systemName: isFavorite ? "checkmark" : "plus")
+                }
+                .font(.system(size: 24, weight: .heavy, design: .default))
+            }
+        }
     }
     
     func favoriteButton(video: Video) -> some View {

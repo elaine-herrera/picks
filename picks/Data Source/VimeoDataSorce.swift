@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-class VimeoDataSource: DataSource {
+struct VimeoDataSource: DataSource {
     
     func load(page: Int) -> AnyPublisher<ObservableState, Never> {
         return Future<ObservableState, Never> { promise in
