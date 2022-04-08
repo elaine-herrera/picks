@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct picksApp: App {
-    let model = DataModel(dataSource: VimeoDataSource())
+    let model = DataModel(dataSource: VimeoDataSource(), persistence: CoreDataPersistence())
     
     var body: some Scene {
         WindowGroup {
