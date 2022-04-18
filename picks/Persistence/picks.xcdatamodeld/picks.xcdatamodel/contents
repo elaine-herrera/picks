@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="PictureEntity" representedClassName="PictureEntity" syncable="YES" codeGenerationType="class">
         <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="link" optional="YES" attributeType="String"/>
         <attribute name="linkWithPlayButton" optional="YES" attributeType="String"/>
         <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="UserEntity"/>
-        <relationship name="video" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="VideoEntity"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="UserEntity" inverseName="pictures" inverseEntity="UserEntity"/>
+        <relationship name="video" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="VideoEntity" inverseName="pictures" inverseEntity="VideoEntity"/>
     </entity>
     <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
         <attribute name="bio" optional="YES" attributeType="String"/>
@@ -16,8 +16,8 @@
         <attribute name="link" optional="YES" attributeType="String"/>
         <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="PictureEntity"/>
-        <relationship name="videos" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="VideoEntity"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PictureEntity" inverseName="user" inverseEntity="PictureEntity"/>
+        <relationship name="videos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="VideoEntity" inverseName="user" inverseEntity="VideoEntity"/>
     </entity>
     <entity name="VideoEntity" representedClassName="VideoEntity" syncable="YES" codeGenerationType="class">
         <attribute name="descriptionInfo" optional="YES" attributeType="String"/>
@@ -31,8 +31,8 @@
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="uri" optional="YES" attributeType="String"/>
         <attribute name="userId" attributeType="String"/>
-        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="PictureEntity"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="UserEntity"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PictureEntity" inverseName="video" inverseEntity="PictureEntity"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="videos" inverseEntity="UserEntity"/>
     </entity>
     <elements>
         <element name="PictureEntity" positionX="-63" positionY="-18" width="128" height="134"/>
