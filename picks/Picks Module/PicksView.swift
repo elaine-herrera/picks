@@ -32,7 +32,7 @@ struct PicksView: View {
             else {
                 ScrollView {
                     if !presenter.query.isEmpty {
-                        SearchFilter(query: presenter.query){
+                        SearchFilterView(query: presenter.query){
                             query = ""
                             presenter.submitCurrentSearchQuery(for: query)
                         }
