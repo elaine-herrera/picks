@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchFilter: View {
+struct SearchFilterView: View {
     var query:String
     let clearHandler: () -> Void
     
@@ -31,7 +31,6 @@ struct SearchFilter: View {
 
 struct SearchFilter_Previews: PreviewProvider {
     static var previews: some View {
-        SearchFilter(query: "Searched text to discard", clearHandler: {})
-            //.preferredColorScheme(.dark)
+        SearchFilterView(query: "Searched text to discard", clearHandler: {})
     }
 }
