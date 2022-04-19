@@ -48,6 +48,9 @@
 		F33AC79727F207A90052DB97 /* VideoDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AC79627F207A90052DB97 /* VideoDetailsInteractor.swift */; };
 		F33AC79927F208F50052DB97 /* VideoDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AC79827F208F50052DB97 /* VideoDetailsRouter.swift */; };
 		F363F375280DDE8E00131D63 /* SearchFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F363F374280DDE8E00131D63 /* SearchFilter.swift */; };
+		F3990B02280F5066000D3DFC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3990B01280F5066000D3DFC /* SettingsView.swift */; };
+		F3990B04280F5100000D3DFC /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3990B03280F5100000D3DFC /* SettingsPresenter.swift */; };
+		F3990B06280F5113000D3DFC /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3990B05280F5113000D3DFC /* SettingsInteractor.swift */; };
 		F3B9A72A2800B8A100E83A9C /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B9A7292800B8A100E83A9C /* FavoritesView.swift */; };
 		F3B9A72C2800B8B900E83A9C /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B9A72B2800B8B900E83A9C /* FavoritesPresenter.swift */; };
 		F3B9A72E2800B8C600E83A9C /* FavoritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B9A72D2800B8C600E83A9C /* FavoritesInteractor.swift */; };
@@ -126,6 +129,9 @@
 		F33AC79627F207A90052DB97 /* VideoDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsInteractor.swift; sourceTree = "<group>"; };
 		F33AC79827F208F50052DB97 /* VideoDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsRouter.swift; sourceTree = "<group>"; };
 		F363F374280DDE8E00131D63 /* SearchFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilter.swift; sourceTree = "<group>"; };
+		F3990B01280F5066000D3DFC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F3990B03280F5100000D3DFC /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		F3990B05280F5113000D3DFC /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		F3B9A7292800B8A100E83A9C /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		F3B9A72B2800B8B900E83A9C /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
 		F3B9A72D2800B8C600E83A9C /* FavoritesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesInteractor.swift; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 				F30021C927EE49D200D4A9FD /* Picks Module */,
 				F30021E827EE538700D4A9FD /* Video Module */,
 				F33AC79127F2070C0052DB97 /* Video Details Module */,
+				F3990B00280F5021000D3DFC /* Settings Module */,
 				F3B9A7282800B87900E83A9C /* Favorites Module */,
 				F30021D227EE4A6200D4A9FD /* Helpers */,
 				F30021C027EE480500D4A9FD /* Entities */,
@@ -335,6 +342,16 @@
 				F33AC79827F208F50052DB97 /* VideoDetailsRouter.swift */,
 			);
 			path = "Video Details Module";
+			sourceTree = "<group>";
+		};
+		F3990B00280F5021000D3DFC /* Settings Module */ = {
+			isa = PBXGroup;
+			children = (
+				F3990B01280F5066000D3DFC /* SettingsView.swift */,
+				F3990B03280F5100000D3DFC /* SettingsPresenter.swift */,
+				F3990B05280F5113000D3DFC /* SettingsInteractor.swift */,
+			);
+			path = "Settings Module";
 			sourceTree = "<group>";
 		};
 		F3B9A7282800B87900E83A9C /* Favorites Module */ = {
@@ -587,14 +604,17 @@
 				F30021CB27EE49EF00D4A9FD /* PicksPresenter.swift in Sources */,
 				F30021C627EE485800D4A9FD /* Video.swift in Sources */,
 				F300219327EE40DB00D4A9FD /* ContentView.swift in Sources */,
+				F3990B06280F5113000D3DFC /* SettingsInteractor.swift in Sources */,
 				F3B9A7302800B8D100E83A9C /* FavoritesRouter.swift in Sources */,
 				F3B9A72C2800B8B900E83A9C /* FavoritesPresenter.swift in Sources */,
 				F30021E327EE50A600D4A9FD /* PicksView.swift in Sources */,
 				F33AC79727F207A90052DB97 /* VideoDetailsInteractor.swift in Sources */,
 				F30021F227EE545C00D4A9FD /* VideoRouter.swift in Sources */,
+				F3990B04280F5100000D3DFC /* SettingsPresenter.swift in Sources */,
 				F363F375280DDE8E00131D63 /* SearchFilter.swift in Sources */,
 				F3B9A7322800B92F00E83A9C /* EmptyFavView.swift in Sources */,
 				F30021E727EE51AB00D4A9FD /* LoadingView.swift in Sources */,
+				F3990B02280F5066000D3DFC /* SettingsView.swift in Sources */,
 				F30021CF27EE4A1500D4A9FD /* PicksInteractor.swift in Sources */,
 				F30021EA27EE53A600D4A9FD /* VideoView.swift in Sources */,
 				F30021DF27EE4D1E00D4A9FD /* VimeoResponseData.swift in Sources */,

@@ -17,7 +17,7 @@ struct ContentView: View {
             .tabItem {
                 Label("Picks", systemImage: "list.bullet")
             }
-            ProgressView()
+            SettingsView(presenter: SettingsPresenter(interactor: SettingsInteractor(model: model)))
             .tabItem {
                 Label("Settings", systemImage: "gear")
             }
