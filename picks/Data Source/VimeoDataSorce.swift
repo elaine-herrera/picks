@@ -22,4 +22,17 @@ struct VimeoDataSource: DataSource {
           }
         }.eraseToAnyPublisher()
     }
+    
+    func search(query: String, page: Int) -> AnyPublisher<ObservableState, Never> {
+        return Future<ObservableState, Never> { promise in
+            VimeoApi.shared.search(query: query, page: page){ result, error in
+                if error == nil {
+                    promise(.success((.loaded(result))))
+                }
+                else{
+                    promise(.success(.failed(error!)))
+                }
+          }
+        }.eraseToAnyPublisher()
+    }
 }

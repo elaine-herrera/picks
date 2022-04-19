@@ -56,10 +56,6 @@ struct LoadingView: View {
                               Text("Published - Likes")
                           }
                           Spacer()
-                          Image(systemName: "star.fill")
-                              .resizable()
-                              .clipShape(RoundedRectangle(cornerRadius: 6))
-                              .frame(width: 80, height: 42)
                       }
                   }
               }

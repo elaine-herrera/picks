@@ -35,6 +35,7 @@ final class DataModel: ObservableObject {
     @Published private(set) var videos = [Video]()
     @Published private(set) var persistenceState = ObservableState.idle
     @Published private(set) var favorites = [Video]()
+    @Published private(set) var query = ""
     
     var dataSourceCancellables : Set<AnyCancellable> = Set()
     var persistenceCancellables : Set<AnyCancellable> = Set()
@@ -55,16 +56,42 @@ final class DataModel: ObservableObject {
             return
         }
         state = .loading
+        if query.isEmpty{
+            getStaffPicks()
+        }
+        else{
+            search()
+        }
+    }
+    
+    func getStaffPicks(){
         dataSource.load(page: page)
             .receive(on: DispatchQueue.main)
             .map({ response in
                 switch response {
-                    case .loaded(let videos):
-                        self.videos.append(contentsOf: videos)
-                        self.page += 1
-                        return response
-                    default:
-                        return response
+                case .loaded(let videos):
+                    self.videos.append(contentsOf: videos)
+                    self.page += 1
+                    return response
+                default:
+                    return response
+                }
+            })
+            .assign(to: \.state, on: self)
+            .store(in: &dataSourceCancellables)
+    }
+    
+    func search(){
+        dataSource.search(query: query, page: page)
+            .receive(on: DispatchQueue.main)
+            .map({ response in
+                switch response {
+                case .loaded(let videos):
+                    self.videos.append(contentsOf: videos)
+                    self.page += 1
+                    return response
+                default:
+                    return response
                 }
             })
             .assign(to: \.state, on: self)
@@ -76,6 +103,21 @@ final class DataModel: ObservableObject {
         if videos.firstIndex(where: { $0.id == currentVideo.id }) == thresholdIndex {
             loadData()
         }
+    }
+    
+    func clear(){
+        for item in dataSourceCancellables{
+            item.cancel()
+        }
+        self.videos.removeAll()
+        self.state = .idle
+        self.page = 1
+    }
+    
+    func performSearch(for query: String){
+        self.clear()
+        self.query = query
+        self.loadData()
     }
     
     func getCurrentError() -> Error? {

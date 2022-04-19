@@ -47,6 +47,7 @@
 		F33AC79527F207900052DB97 /* VideoDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AC79427F207900052DB97 /* VideoDetailsPresenter.swift */; };
 		F33AC79727F207A90052DB97 /* VideoDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AC79627F207A90052DB97 /* VideoDetailsInteractor.swift */; };
 		F33AC79927F208F50052DB97 /* VideoDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AC79827F208F50052DB97 /* VideoDetailsRouter.swift */; };
+		F363F375280DDE8E00131D63 /* SearchFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F363F374280DDE8E00131D63 /* SearchFilter.swift */; };
 		F3B9A72A2800B8A100E83A9C /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B9A7292800B8A100E83A9C /* FavoritesView.swift */; };
 		F3B9A72C2800B8B900E83A9C /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B9A72B2800B8B900E83A9C /* FavoritesPresenter.swift */; };
 		F3B9A72E2800B8C600E83A9C /* FavoritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B9A72D2800B8C600E83A9C /* FavoritesInteractor.swift */; };
@@ -124,6 +125,7 @@
 		F33AC79427F207900052DB97 /* VideoDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsPresenter.swift; sourceTree = "<group>"; };
 		F33AC79627F207A90052DB97 /* VideoDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsInteractor.swift; sourceTree = "<group>"; };
 		F33AC79827F208F50052DB97 /* VideoDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsRouter.swift; sourceTree = "<group>"; };
+		F363F374280DDE8E00131D63 /* SearchFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilter.swift; sourceTree = "<group>"; };
 		F3B9A7292800B8A100E83A9C /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		F3B9A72B2800B8B900E83A9C /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
 		F3B9A72D2800B8C600E83A9C /* FavoritesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesInteractor.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				F30021E627EE51AB00D4A9FD /* LoadingView.swift */,
 				F30021EB27EE53E200D4A9FD /* WebView.swift */,
 				F30021F327EE558C00D4A9FD /* Helpers.swift */,
+				F363F374280DDE8E00131D63 /* SearchFilter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				F30021E327EE50A600D4A9FD /* PicksView.swift in Sources */,
 				F33AC79727F207A90052DB97 /* VideoDetailsInteractor.swift in Sources */,
 				F30021F227EE545C00D4A9FD /* VideoRouter.swift in Sources */,
+				F363F375280DDE8E00131D63 /* SearchFilter.swift in Sources */,
 				F3B9A7322800B92F00E83A9C /* EmptyFavView.swift in Sources */,
 				F30021E727EE51AB00D4A9FD /* LoadingView.swift in Sources */,
 				F30021CF27EE4A1500D4A9FD /* PicksInteractor.swift in Sources */,

@@ -10,6 +10,7 @@ import Foundation
 
 protocol DataSource{
     func load(page: Int) -> AnyPublisher<ObservableState, Never>
+    func search(query: String, page: Int) -> AnyPublisher<ObservableState, Never>
 }
 
 protocol Persistence{

@@ -11,7 +11,7 @@ import SwiftUI
 class PicksPresenter: ObservableObject {
     private let interactor: PicksInteractor
     @Published var videos = [Video]()
-    @Published var search = ""
+    @Published var query = ""
     private var cancellables = Set<AnyCancellable>()
     private var ruter = PicksRouter()
     
@@ -21,26 +21,34 @@ class PicksPresenter: ObservableObject {
         interactor.model.$videos
           .assign(to: \.videos, on: self)
           .store(in: &cancellables)
+        
+        interactor.model.$query
+          .assign(to: \.query, on: self)
+          .store(in: &cancellables)
     }
     
-    func loadDataIfNeeded(currentVideo: Video){
-        interactor.model.loadDataIfNeeded(currentVideo: currentVideo)
+    func loadDataIfNeeded(currentVideo: Video) {
+        interactor.loadDataIfNeeded(currentVideo: currentVideo)
     }
     
     func isLoading() -> Bool {
-        return interactor.model.state == .loading
+        return interactor.isLoading()
     }
     
     func failed() -> Bool {
-        return interactor.model.state == .failed(ClientError.anyError)
+        return interactor.failed()
     }
     
     func getCurrentError() -> Error? {
-        return interactor.model.getCurrentError()
+        return interactor.getCurrentError()
     }
     
     func loadData() {
-        interactor.model.loadData()
+        interactor.loadData()
+    }
+    
+    func submitCurrentSearchQuery(for query: String){
+        interactor.submitCurrentSearchQuery(for: query)
     }
     
     func presentVideoView(for video: Video) -> some View {

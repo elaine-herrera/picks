@@ -9,12 +9,21 @@ import SwiftUI
 
 struct PicksView: View {
     @ObservedObject var presenter: PicksPresenter
+    @State var query = ""
     
     var body: some View {
         NavigationView {
             if presenter.videos.isEmpty && presenter.isLoading(){
-                ScrollView(showsIndicators: false){
-                    LoadingView()
+                if query.isEmpty {
+                    ScrollView(showsIndicators: false){
+                        LoadingView()
+                    }
+                }
+                else{
+                    ScrollView(showsIndicators: false){
+                        LoadingView()
+                    }
+                    .navigationTitle("Searching ...")
                 }
             }
             else if presenter.failed() {
@@ -22,6 +31,12 @@ struct PicksView: View {
             }
             else {
                 ScrollView {
+                    if !presenter.query.isEmpty {
+                        SearchFilter(query: presenter.query){
+                            query = ""
+                            presenter.submitCurrentSearchQuery(for: query)
+                        }
+                    }
                     LazyVStack(spacing: 32) {
                         ForEach (presenter.videos, id: \.id){ video in
                             presenter.presentVideoView(for: video)
@@ -32,8 +47,11 @@ struct PicksView: View {
                     }
                     .background(Color(UIColor.systemGroupedBackground))
                 }
-                .searchable(text: $presenter.search, prompt: "Look for something")
-                .navigationTitle("Staff Picks")
+                .searchable(text: $query, prompt: "Look for something")
+                .navigationTitle( !presenter.query.isEmpty ? "Search Results" : "Staff Picks")
+                .onSubmit(of: .search) {
+                    presenter.submitCurrentSearchQuery(for: query)
+                }
             }
         }
     }
