@@ -99,7 +99,7 @@ class VimeoApi {
                     self.authenticatedRequest(request: request, page: page, completionHandler: completionHandler)
                 }
                 else{
-                    completionHandler([], ClientError.invalidAccessToken)
+                    completionHandler([], error)
                 }
             }
         }
@@ -127,7 +127,7 @@ class VimeoApi {
                     self.authenticatedRequest(request: request, page: page, completionHandler: completionHandler)
                 }
                 else{
-                    completionHandler([], ClientError.invalidAccessToken)
+                    completionHandler([], error)
                 }
             }
         }
