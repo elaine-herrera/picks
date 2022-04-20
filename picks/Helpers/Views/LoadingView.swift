@@ -10,19 +10,14 @@ import SwiftUI
 struct LoadingView: View {
     @State var show = false
     let height = (UIScreen.main.bounds.size.width * 360) / 640
-    var center = UIScreen.main.bounds.width
-    let colors = [ Color.clear, Color.black,  Color.clear]
     
     var body: some View {
         ZStack{
             list()
-                .opacity(0.7)
-            list()
-                .mask(Rectangle().fill( LinearGradient(gradient: .init(colors: colors), startPoint: .leading, endPoint: .trailing))
-                        .offset(x: self.show ? center : -center))
+                .opacity(self.show ? 0.2 : 1)
         }
         .onAppear {
-            withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: false)){
+            withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: true)){
                 self.show.toggle()
             }
         }

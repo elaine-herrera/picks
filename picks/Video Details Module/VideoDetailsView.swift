@@ -28,9 +28,12 @@ struct VideoDetailsView: View {
                 .buttonStyle(.plain)
                 presenter.presentVideoFooterView()
                 Divider()
-                Text("\(video.description ?? " ")")
-                    .font(.subheadline)
-                    .padding()
+                VStack{
+                    Text("\(video.description ?? " ")")
+                        .font(.subheadline)
+                }
+                .padding([.top, .bottom], 32)
+                .padding([.leading, .trailing], 8)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
