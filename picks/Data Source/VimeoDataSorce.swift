@@ -35,4 +35,17 @@ struct VimeoDataSource: DataSource {
           }
         }.eraseToAnyPublisher()
     }
+    
+    func getCategories(page: Int) -> AnyPublisher<ObservableCategoryState, Never> {
+        return Future<ObservableCategoryState, Never> { promise in
+            VimeoApi.shared.getCategories(page: page){ result, error in
+                if error == nil {
+                    promise(.success((.loaded(result))))
+                }
+                else{
+                    promise(.success(.failed(error!)))
+                }
+          }
+        }.eraseToAnyPublisher()
+    }
 }
