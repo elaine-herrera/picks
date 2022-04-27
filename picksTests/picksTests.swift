@@ -6,24 +6,52 @@
 //
 
 import XCTest
+import Combine
 @testable import picks
 
 class picksTests: XCTestCase {
 
+    var sut: DataModel!
+    var sutDataSource: MockDataSource!
+    var sutPersistance: MockPersistance!
+    private var cancellables = Set<AnyCancellable>()
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        sutDataSource = MockDataSource()
+        sutDataSource.loadResult = Result.success(.failed(NSError())).publisher.eraseToAnyPublisher()
+        sutPersistance = MockPersistance()
+        sutPersistance.loadResult = Result.success(.loaded([])).publisher.eraseToAnyPublisher()
+        sut = DataModel(dataSource: sutDataSource, persistence: sutPersistance)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+        sutDataSource = nil
+        sutPersistance = nil
+        try super.tearDownWithError()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testNetworkFailure() throws {
+        let expectation = XCTestExpectation(description: "If network error then list of videos is empty")
+        
+        sut.$state.dropFirst().sink { state in
+            switch state {
+            case .idle:
+                break
+            case .loading:
+                break;
+            default:
+                XCTAssertEqual(self.sut.videos.count, 0)
+                expectation.fulfill()
+                break;
+            }
+        }
+        .store(in: &cancellables)
+        
+        sut.loadData()
+        
+        wait(for: [expectation], timeout: 1)
     }
 
     func testPerformanceExample() throws {
@@ -33,4 +61,38 @@ class picksTests: XCTestCase {
         }
     }
 
+}
+
+internal struct MockDataSource: DataSource {
+    var loadResult: AnyPublisher<ObservableState, Never>!
+    
+    func load(page: Int) -> AnyPublisher<ObservableState, Never> {
+        return loadResult
+    }
+    
+    func search(query: String, page: Int) -> AnyPublisher<ObservableState, Never> {
+        return loadResult
+    }
+}
+
+internal struct MockPersistance: Persistence {
+    var loadResult: AnyPublisher<ObservableState, Never>!
+    
+    func load() -> AnyPublisher<ObservableState, Never> {
+        return loadResult
+    }
+    
+    func save(video: Video) -> AnyPublisher<ObservableState, Never> {
+        return loadResult
+    }
+    
+    func remove(video: Video) -> AnyPublisher<ObservableState, Never> {
+        return loadResult
+    }
+    
+    func clear() {
+        
+    }
+    
+    
 }

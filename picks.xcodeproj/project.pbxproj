@@ -223,6 +223,7 @@
 				F300219027EE40DB00D4A9FD /* picksApp.swift */,
 				F300219227EE40DB00D4A9FD /* ContentView.swift */,
 				F30021D027EE4A3D00D4A9FD /* DataModel.swift */,
+				F30021C027EE480500D4A9FD /* Entities */,
 				F30021D527EE4B7E00D4A9FD /* Data Source */,
 				F30021BF27EE47EC00D4A9FD /* Persistence */,
 				F30021C927EE49D200D4A9FD /* Picks Module */,
@@ -231,7 +232,6 @@
 				F3990B00280F5021000D3DFC /* Settings Module */,
 				F3B9A7282800B87900E83A9C /* Favorites Module */,
 				F30021D227EE4A6200D4A9FD /* Helpers */,
-				F30021C027EE480500D4A9FD /* Entities */,
 				F300219427EE40DD00D4A9FD /* Assets.xcassets */,
 				F300219627EE40DD00D4A9FD /* Preview Content */,
 			);
