@@ -11,3 +11,8 @@ struct VimeoResponseData: Codable {
     let total: Int
     let data: [Video]
 }
+
+struct VimeoCategoryResponseData: Codable {
+    let total: Int
+    let data: [Category]
+}
