@@ -135,6 +135,31 @@ class VimeoApi {
             self.authenticatedRequest(request: request, page: page, completionHandler: completionHandler)
         }
     }
+    
+    /// Get Categories
+    func getCategories(page: Int, completionHandler: @escaping ([Category], Error?) -> Void) {
+        
+        let endpoint = "https://api.vimeo.com/categories"
+        let params = buildPaginatedQuery(for: page)
+        guard let request = buildRequest(for: endpoint, params: params) else {
+            completionHandler([], NSError())
+            return
+        }
+        
+        if VimeoApi.accessToken.isEmpty {
+            VimeoApi.shared.requestAccessToken{ result, error in
+                if result {
+                    self.authenticatedRequest(request: request, page: page, completionHandler: completionHandler)
+                }
+                else{
+                    completionHandler([], error)
+                }
+            }
+        }
+        else {
+            self.authenticatedRequest(request: request, page: page, completionHandler: completionHandler)
+        }
+    }
 }
 
 extension VimeoApi {
@@ -190,6 +215,34 @@ extension VimeoApi {
                 let decodedData = try decoder.decode(VimeoResponseData.self, from: data!)
                 let videos = decodedData.data
                 completionHandler(videos, nil)
+            }
+            catch let parseError {
+                completionHandler([], parseError)
+            }
+        }.resume()
+    }
+    
+    ///Performs an authenticated request that returns a list of categories
+    private func authenticatedRequest(request: URLRequest, page: Int, completionHandler: @escaping ([Category], Error?) -> Void){
+        var _request = request
+        _request.addValue("bearer \(VimeoApi.accessToken)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: _request){ data, response, error in
+            if let error = error {
+                completionHandler([], error)
+                return
+            }
+            let response = response as! HTTPURLResponse
+            let status = response.statusCode
+            guard status == 200 else {
+                completionHandler([], ClientError.invalidServerResponse)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let decodedData = try decoder.decode(VimeoCategoryResponseData.self, from: data!)
+                let categories = decodedData.data
+                completionHandler(categories, nil)
             }
             catch let parseError {
                 completionHandler([], parseError)
