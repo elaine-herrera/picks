@@ -8,38 +8,20 @@
 import Combine
 import Foundation
 
-enum ObservableState {
-    case idle
-    case loading
-    case failed(Error)
-    case loaded([Video])
-}
-
-extension ObservableState: Equatable{
-    static func == (lhs: ObservableState, rhs: ObservableState) -> Bool {
-        switch (lhs, rhs){
-        case (.idle, .idle):
-            return true
-        case (.loading, .loading):
-            return true
-        case (.failed(_), .failed(_)):
-            return true
-        default:
-            return false
-        }
-    }
-}
-
 final class DataModel: ObservableObject {
     @Published private(set) var state = ObservableState.idle
     @Published private(set) var videos = [Video]()
     @Published private(set) var persistenceState = ObservableState.idle
     @Published private(set) var favorites = [Video]()
     @Published private(set) var query = ""
+    @Published private(set) var categoryState = ObservableCategoryState.idle
+    @Published private(set) var categories = [Category]()
     
     var dataSourceCancellables : Set<AnyCancellable> = Set()
     var persistenceCancellables : Set<AnyCancellable> = Set()
+    var categoryCancellables : Set<AnyCancellable> = Set()
     var page: Int = 1
+    var categoryPage: Int = 1
     
     let dataSource: DataSource
     let persistence: Persistence
@@ -118,6 +100,27 @@ final class DataModel: ObservableObject {
         self.clear()
         self.query = query
         self.loadData()
+    }
+    
+    func getCategories(){
+        if categoryState == .loading {
+            return
+        }
+        categoryState = .loading
+        dataSource.getCategories(page: categoryPage)
+            .receive(on: DispatchQueue.main)
+            .map({ response -> ObservableCategoryState in
+                switch response {
+                case .loaded(let items):
+                    self.categories.append(contentsOf: items)
+                    self.categoryPage += 1
+                    return response
+                default:
+                    return response
+                }
+            })
+            .assign(to: \.categoryState, on: self)
+            .store(in: &categoryCancellables)
     }
     
     func getCurrentError() -> Error? {

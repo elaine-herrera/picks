@@ -73,6 +73,10 @@ internal struct MockDataSource: DataSource {
     func search(query: String, page: Int) -> AnyPublisher<ObservableState, Never> {
         return loadResult
     }
+    
+    func getCategories(page: Int) -> AnyPublisher<ObservableCategoryState, Never> {
+        return Result.success(.loaded([])).publisher.eraseToAnyPublisher()
+    }
 }
 
 internal struct MockPersistance: Persistence {

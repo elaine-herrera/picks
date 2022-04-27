@@ -10,29 +10,46 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var presenter: SettingsPresenter
     @State private var showingClearAlert = false
+    @State private var multiSelection = Set<String>()
     
     var body: some View {
-        List{
-            Section(header: Text("Filters")){
-                HStack{
-                    Text("Categories")
-                    Spacer()
-                    Text("All")
-                        .foregroundColor(Color(uiColor: UIColor.secondaryLabel))
+        NavigationView {
+            List{
+                Section(header: Text("Filters")){
+                    NavigationLink(destination: categoriesList()){
+                        Text("Categories")
+                    }
+                }
+                
+                Section(header: Text("Actions")){
+                    Button("Clear Favorites"){ showingClearAlert.toggle() }
                 }
             }
-            
-            Section(header: Text("Actions")){
-                Button("Clear Favorites"){ showingClearAlert.toggle() }
+            .navigationTitle("Settings")
+            .alert("Do you want to clear your list of Favorites?", isPresented: $showingClearAlert) {
+                Button("Delete", role: .destructive) {
+                    presenter.clearFavorites()
+                }
+                Button("Cancel", role: .cancel) {}
             }
         }
-        .navigationTitle("Settings")
-        .alert("Do you want to clear your list of Favorites?", isPresented: $showingClearAlert) {
-            Button("Delete", role: .destructive) {
-                presenter.clearFavorites()
+        .navigationViewStyle(.stack)
+    }
+    
+    
+    func categoriesList() -> some View {
+        Group {
+            if presenter.categories.isEmpty {
+                ProgressView()
             }
-            Button("Cancel", role: .cancel) {
+            else {
+                List(presenter.categories, id: \.id, selection: $multiSelection){ category in
+                    Text(category.name ?? "Some")
+                }
+                .navigationBarItems(trailing: EditButton())
+                .navigationTitle("Categories")
             }
         }
+        
     }
 }

@@ -11,6 +11,7 @@ import Foundation
 protocol DataSource{
     func load(page: Int) -> AnyPublisher<ObservableState, Never>
     func search(query: String, page: Int) -> AnyPublisher<ObservableState, Never>
+    func getCategories(page: Int) -> AnyPublisher<ObservableCategoryState, Never>
 }
 
 protocol Persistence{

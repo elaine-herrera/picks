@@ -14,6 +14,10 @@ class SettingsInteractor {
         self.model = model
     }
     
+    func getCategories(){
+        return model.getCategories()
+    }
+    
     func clearFavorites(){
         return model.clearFavorites()
     }

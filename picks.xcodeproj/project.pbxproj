@@ -48,6 +48,9 @@
 		F33AC79727F207A90052DB97 /* VideoDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AC79627F207A90052DB97 /* VideoDetailsInteractor.swift */; };
 		F33AC79927F208F50052DB97 /* VideoDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AC79827F208F50052DB97 /* VideoDetailsRouter.swift */; };
 		F363F375280DDE8E00131D63 /* SearchFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F363F374280DDE8E00131D63 /* SearchFilterView.swift */; };
+		F37618B12819B29C00E07A70 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37618B02819B29C00E07A70 /* Category.swift */; };
+		F37618B62819B8E800E07A70 /* ObservableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37618B52819B8E800E07A70 /* ObservableState.swift */; };
+		F37618B82819C67B00E07A70 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37618B72819C67B00E07A70 /* SettingsRouter.swift */; };
 		F3990B02280F5066000D3DFC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3990B01280F5066000D3DFC /* SettingsView.swift */; };
 		F3990B04280F5100000D3DFC /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3990B03280F5100000D3DFC /* SettingsPresenter.swift */; };
 		F3990B06280F5113000D3DFC /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3990B05280F5113000D3DFC /* SettingsInteractor.swift */; };
@@ -129,6 +132,9 @@
 		F33AC79627F207A90052DB97 /* VideoDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsInteractor.swift; sourceTree = "<group>"; };
 		F33AC79827F208F50052DB97 /* VideoDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsRouter.swift; sourceTree = "<group>"; };
 		F363F374280DDE8E00131D63 /* SearchFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterView.swift; sourceTree = "<group>"; };
+		F37618B02819B29C00E07A70 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		F37618B52819B8E800E07A70 /* ObservableState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableState.swift; sourceTree = "<group>"; };
+		F37618B72819C67B00E07A70 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		F3990B01280F5066000D3DFC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F3990B03280F5100000D3DFC /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		F3990B05280F5113000D3DFC /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
@@ -279,6 +285,7 @@
 				F30021C727EE489100D4A9FD /* Picture.swift */,
 				F30021C327EE484E00D4A9FD /* User.swift */,
 				F30021C527EE485800D4A9FD /* Video.swift */,
+				F37618B02819B29C00E07A70 /* Category.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -300,6 +307,7 @@
 				F3990B07280F587C000D3DFC /* Views */,
 				F30021D327EE4A7B00D4A9FD /* Protocols.swift */,
 				F30021F327EE558C00D4A9FD /* Helpers.swift */,
+				F37618B52819B8E800E07A70 /* ObservableState.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -346,6 +354,7 @@
 				F3990B01280F5066000D3DFC /* SettingsView.swift */,
 				F3990B03280F5100000D3DFC /* SettingsPresenter.swift */,
 				F3990B05280F5113000D3DFC /* SettingsInteractor.swift */,
+				F37618B72819C67B00E07A70 /* SettingsRouter.swift */,
 			);
 			path = "Settings Module";
 			sourceTree = "<group>";
@@ -605,6 +614,7 @@
 				F30021EE27EE544100D4A9FD /* VideoPresenter.swift in Sources */,
 				F30021E127EE4E7D00D4A9FD /* VimeoDataSorce.swift in Sources */,
 				F30021D927EE4BE700D4A9FD /* VimeoApi.swift in Sources */,
+				F37618B62819B8E800E07A70 /* ObservableState.swift in Sources */,
 				F30021DB27EE4C4C00D4A9FD /* VimeoAuthenticationResponse.swift in Sources */,
 				F30021CD27EE4A0000D4A9FD /* PicksRouter.swift in Sources */,
 				F30021D127EE4A3D00D4A9FD /* DataModel.swift in Sources */,
@@ -633,10 +643,12 @@
 				F30021C427EE484E00D4A9FD /* User.swift in Sources */,
 				F33AC79027F1FE010052DB97 /* VideoFooterView.swift in Sources */,
 				F30021F427EE558C00D4A9FD /* Helpers.swift in Sources */,
+				F37618B82819C67B00E07A70 /* SettingsRouter.swift in Sources */,
 				F3B9A72A2800B8A100E83A9C /* FavoritesView.swift in Sources */,
 				F300219127EE40DB00D4A9FD /* picksApp.swift in Sources */,
 				F33AC79927F208F50052DB97 /* VideoDetailsRouter.swift in Sources */,
 				F30021EC27EE53E200D4A9FD /* WebView.swift in Sources */,
+				F37618B12819B29C00E07A70 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
