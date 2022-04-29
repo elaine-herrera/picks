@@ -10,7 +10,6 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var presenter: SettingsPresenter
     @State private var showingClearAlert = false
-    @State private var multiSelection = Set<String>()
     
     var body: some View {
         NavigationView {
@@ -43,7 +42,7 @@ struct SettingsView: View {
                 ProgressView()
             }
             else {
-                List(presenter.categories, id: \.id, selection: $multiSelection){ category in
+                List(presenter.categories, id: \.id, selection: presenter.multiSelection){ category in
                     Text(category.name ?? "Some")
                 }
                 .navigationBarItems(trailing: EditButton())
