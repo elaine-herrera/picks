@@ -26,7 +26,7 @@ struct PicksView: View {
                     .navigationTitle("Searching ...")
                 }
             }
-            else if presenter.failed() {
+            else if presenter.failed() && presenter.videos.isEmpty {
                 ErrorView(error: presenter.getCurrentError()!, retryHandler: presenter.loadData)
             }
             else {
