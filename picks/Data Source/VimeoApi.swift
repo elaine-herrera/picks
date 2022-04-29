@@ -69,7 +69,12 @@ class VimeoApi {
             let response = response as! HTTPURLResponse
             let status = response.statusCode
             guard status == 200 else {
-                completionHandler(false, ClientError.invalidServerResponse)
+                if status == 429 {
+                    completionHandler(false, ClientError.appSurpassedRateLimit)
+                }
+                else {
+                    completionHandler(false, ClientError.invalidServerResponse)
+                }
                 return
             }
             do {

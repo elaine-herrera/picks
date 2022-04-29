@@ -11,6 +11,7 @@ enum ClientError: Error {
     case missingApiConfig
     case invalidServerResponse
     case invalidAccessToken
+    case appSurpassedRateLimit
     case anyError
 }
 
@@ -23,6 +24,8 @@ extension ClientError: LocalizedError{
             return "Invalid Server Response"
         case .invalidAccessToken:
             return "Invalid Access Token"
+        case .appSurpassedRateLimit:
+            return "Application has surpassed its rate limit, or number of requests they can send in a given period of time."
         case .anyError:
             return "Unknown error"
         }
