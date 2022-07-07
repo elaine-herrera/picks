@@ -9,32 +9,35 @@ import Combine
 import Foundation
 
 final class DataModel: ObservableObject {
-    @Published private(set) var state = ObservableState.idle
+    @Published private(set) var state = ObservableState<VimeoResponseData<Video>>.idle
     @Published private(set) var videos = [Video]()
-    @Published private(set) var persistenceState = ObservableState.idle
-    @Published private(set) var favorites = [Video]()
     @Published private(set) var query = ""
-    @Published private(set) var categoryState = ObservableCategoryState.idle
+    @Published private(set) var persistenceState = ObservableState<[Video]>.idle
+    @Published private(set) var favorites = [Video]()
+    @Published private(set) var categoryState = ObservableState<VimeoResponseData<Category>>.idle
     @Published private(set) var categories = [Category]()
     
     var dataSourceCancellables : Set<AnyCancellable> = Set()
     var persistenceCancellables : Set<AnyCancellable> = Set()
     var categoryCancellables : Set<AnyCancellable> = Set()
-    var page: Int = 1
-    var categoryPage: Int = 1
     
-    let dataSource: DataSource
+    var page: Int = 1
+    var hasMore = true
+    var categoryPage: Int = 1
+    var hasMoreCategories = true
+    
+    let dataSorce = VimeoDataSource<VimeoResponseData<Video>>()
+    let categoriesDataSorce = VimeoDataSource<VimeoResponseData<Category>>()
     let persistence: Persistence
     
-    init(dataSource: DataSource, persistence: Persistence){
-        self.dataSource = dataSource
+    init(persistence: Persistence){
         self.persistence = persistence
         self.loadData()
         self.loadFavorites()
     }
     
     func loadData(){
-        if state == .loading{
+        if state == .loading || !hasMore {
             return
         }
         state = .loading
@@ -47,13 +50,17 @@ final class DataModel: ObservableObject {
     }
     
     func getStaffPicks(){
-        dataSource.load(page: page)
+        let request = StaffPicksRequest(page: page)
+        dataSorce.load(request: request)
             .receive(on: DispatchQueue.main)
             .map({ response in
                 switch response {
-                case .loaded(let videos):
-                    self.videos.append(contentsOf: videos)
+                case .loaded(let item):
+                    self.videos.append(contentsOf: item.data)
                     self.page += 1
+                    if item.total == self.videos.count {
+                        self.hasMore = false
+                    }
                     return response
                 default:
                     return response
@@ -64,13 +71,17 @@ final class DataModel: ObservableObject {
     }
     
     func search(){
-        dataSource.search(query: query, page: page)
+        let request = SearchRequest(page: page, query: query)
+        dataSorce.load(request: request)
             .receive(on: DispatchQueue.main)
             .map({ response in
                 switch response {
-                case .loaded(let videos):
-                    self.videos.append(contentsOf: videos)
+                case .loaded(let item):
+                    self.videos.append(contentsOf: item.data)
                     self.page += 1
+                    if item.total == self.videos.count {
+                        self.hasMore = false
+                    }
                     return response
                 default:
                     return response
@@ -103,17 +114,21 @@ final class DataModel: ObservableObject {
     }
     
     func getCategories(){
-        if categoryState == .loading {
+        if categoryState == .loading || !hasMoreCategories{
             return
         }
         categoryState = .loading
-        dataSource.getCategories(page: categoryPage)
+        let request = CategoriesRequest(page: categoryPage)
+        categoriesDataSorce.load(request: request)
             .receive(on: DispatchQueue.main)
-            .map({ response -> ObservableCategoryState in
+            .map({ response in
                 switch response {
-                case .loaded(let items):
-                    self.categories.append(contentsOf: items)
+                case .loaded(let item):
+                    self.categories.append(contentsOf: item.data)
                     self.categoryPage += 1
+                    if item.total == self.videos.count {
+                        self.hasMoreCategories = false
+                    }
                     return response
                 default:
                     return response
@@ -132,6 +147,8 @@ final class DataModel: ObservableObject {
         case .failed(let error):
             return error
         case .loaded(_):
+            return nil
+        case .done:
             return nil
         }
     }

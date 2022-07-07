@@ -29,7 +29,7 @@ struct CoreDataPersistence {
 }
 
 extension CoreDataPersistence: Persistence {
-    func load() -> AnyPublisher<ObservableState, Never> {
+    func load() -> AnyPublisher<ObservableState<[Video]>, Never> {
         return Future<ObservableState, Never>{ promise in
             load(){ result, error in
                 if error == nil {
@@ -42,7 +42,7 @@ extension CoreDataPersistence: Persistence {
         }.eraseToAnyPublisher()
     }
     
-    func save(video: Video) -> AnyPublisher<ObservableState, Never> {
+    func save(video: Video) -> AnyPublisher<ObservableState<[Video]>, Never> {
         return Future<ObservableState, Never>{ promise in
             save(video: video){ result, error in
                 if error == nil {
@@ -55,7 +55,7 @@ extension CoreDataPersistence: Persistence {
         }.eraseToAnyPublisher()
     }
     
-    func remove(video: Video) -> AnyPublisher<ObservableState, Never> {
+    func remove(video: Video) -> AnyPublisher<ObservableState<[Video]>, Never> {
         return Future<ObservableState, Never>{ promise in
             remove(video: video){ result, error in
                 if error == nil {

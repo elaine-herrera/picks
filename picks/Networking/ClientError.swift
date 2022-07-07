@@ -27,7 +27,7 @@ extension ClientError: LocalizedError{
         case .appSurpassedRateLimit:
             return "Application has surpassed its rate limit, or number of requests they can send in a given period of time."
         case .anyError:
-            return "Unknown error"
+            return "An error ocurred"
         }
     }
 }

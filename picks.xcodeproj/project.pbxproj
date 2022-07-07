@@ -42,6 +42,11 @@
 		F30021F027EE544F00D4A9FD /* VideoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021EF27EE544F00D4A9FD /* VideoInteractor.swift */; };
 		F30021F227EE545C00D4A9FD /* VideoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021F127EE545C00D4A9FD /* VideoRouter.swift */; };
 		F30021F427EE558C00D4A9FD /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30021F327EE558C00D4A9FD /* Helpers.swift */; };
+		F33856BC28762D9A00F47F7F /* VimeoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33856BB28762D9A00F47F7F /* VimeoRequest.swift */; };
+		F33856BE28762E2400F47F7F /* StaffPicksRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33856BD28762E2400F47F7F /* StaffPicksRequest.swift */; };
+		F33856C028762EB400F47F7F /* VimeoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33856BF28762EB400F47F7F /* VimeoAPIClient.swift */; };
+		F33856C228763BFA00F47F7F /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33856C128763BFA00F47F7F /* SearchRequest.swift */; };
+		F33856C42876404B00F47F7F /* CategoriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33856C32876404B00F47F7F /* CategoriesRequest.swift */; };
 		F33AC79027F1FE010052DB97 /* VideoFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AC78F27F1FE010052DB97 /* VideoFooterView.swift */; };
 		F33AC79327F207590052DB97 /* VideoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AC79227F207590052DB97 /* VideoDetailsView.swift */; };
 		F33AC79527F207900052DB97 /* VideoDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AC79427F207900052DB97 /* VideoDetailsPresenter.swift */; };
@@ -126,6 +131,11 @@
 		F30021EF27EE544F00D4A9FD /* VideoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInteractor.swift; sourceTree = "<group>"; };
 		F30021F127EE545C00D4A9FD /* VideoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRouter.swift; sourceTree = "<group>"; };
 		F30021F327EE558C00D4A9FD /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		F33856BB28762D9A00F47F7F /* VimeoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimeoRequest.swift; sourceTree = "<group>"; };
+		F33856BD28762E2400F47F7F /* StaffPicksRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffPicksRequest.swift; sourceTree = "<group>"; };
+		F33856BF28762EB400F47F7F /* VimeoAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimeoAPIClient.swift; sourceTree = "<group>"; };
+		F33856C128763BFA00F47F7F /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
+		F33856C32876404B00F47F7F /* CategoriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRequest.swift; sourceTree = "<group>"; };
 		F33AC78F27F1FE010052DB97 /* VideoFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFooterView.swift; sourceTree = "<group>"; };
 		F33AC79227F207590052DB97 /* VideoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsView.swift; sourceTree = "<group>"; };
 		F33AC79427F207900052DB97 /* VideoDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsPresenter.swift; sourceTree = "<group>"; };
@@ -229,6 +239,7 @@
 				F300219027EE40DB00D4A9FD /* picksApp.swift */,
 				F300219227EE40DB00D4A9FD /* ContentView.swift */,
 				F30021D027EE4A3D00D4A9FD /* DataModel.swift */,
+				F33856BA28762D7500F47F7F /* Networking */,
 				F30021C027EE480500D4A9FD /* Entities */,
 				F30021D527EE4B7E00D4A9FD /* Data Source */,
 				F30021BF27EE47EC00D4A9FD /* Persistence */,
@@ -318,9 +329,6 @@
 				F30021D627EE4BB500D4A9FD /* VimeoApiList.plist */,
 				F30021E027EE4E7D00D4A9FD /* VimeoDataSorce.swift */,
 				F30021D827EE4BE700D4A9FD /* VimeoApi.swift */,
-				F30021DE27EE4D1E00D4A9FD /* VimeoResponseData.swift */,
-				F30021DA27EE4C4C00D4A9FD /* VimeoAuthenticationResponse.swift */,
-				F30021DC27EE4C8400D4A9FD /* ClientError.swift */,
 			);
 			path = "Data Source";
 			sourceTree = "<group>";
@@ -335,6 +343,17 @@
 				F30021F127EE545C00D4A9FD /* VideoRouter.swift */,
 			);
 			path = "Video Module";
+			sourceTree = "<group>";
+		};
+		F33856BA28762D7500F47F7F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F3C9138428773B49005F1D58 /* Responses */,
+				F3C9138328773A83005F1D58 /* Requests */,
+				F33856BF28762EB400F47F7F /* VimeoAPIClient.swift */,
+				F30021DC27EE4C8400D4A9FD /* ClientError.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		F33AC79127F2070C0052DB97 /* Video Details Module */ = {
@@ -381,6 +400,26 @@
 				F3B9A72F2800B8D100E83A9C /* FavoritesRouter.swift */,
 			);
 			path = "Favorites Module";
+			sourceTree = "<group>";
+		};
+		F3C9138328773A83005F1D58 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				F33856C32876404B00F47F7F /* CategoriesRequest.swift */,
+				F33856C128763BFA00F47F7F /* SearchRequest.swift */,
+				F33856BD28762E2400F47F7F /* StaffPicksRequest.swift */,
+				F33856BB28762D9A00F47F7F /* VimeoRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		F3C9138428773B49005F1D58 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				F30021DE27EE4D1E00D4A9FD /* VimeoResponseData.swift */,
+				F30021DA27EE4C4C00D4A9FD /* VimeoAuthenticationResponse.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -608,6 +647,7 @@
 				F3B9A72E2800B8C600E83A9C /* FavoritesInteractor.swift in Sources */,
 				F30021DD27EE4C8400D4A9FD /* ClientError.swift in Sources */,
 				F300219D27EE40DE00D4A9FD /* picks.xcdatamodeld in Sources */,
+				F33856C228763BFA00F47F7F /* SearchRequest.swift in Sources */,
 				F33AC79527F207900052DB97 /* VideoDetailsPresenter.swift in Sources */,
 				F3B9A7372800BD6300E83A9C /* FavoriteRowView.swift in Sources */,
 				F30021E527EE50DD00D4A9FD /* ErrorView.swift in Sources */,
@@ -630,6 +670,7 @@
 				F30021F227EE545C00D4A9FD /* VideoRouter.swift in Sources */,
 				F3990B04280F5100000D3DFC /* SettingsPresenter.swift in Sources */,
 				F363F375280DDE8E00131D63 /* SearchFilterView.swift in Sources */,
+				F33856C42876404B00F47F7F /* CategoriesRequest.swift in Sources */,
 				F3B9A7322800B92F00E83A9C /* EmptyFavView.swift in Sources */,
 				F30021E727EE51AB00D4A9FD /* LoadingView.swift in Sources */,
 				F3990B02280F5066000D3DFC /* SettingsView.swift in Sources */,
@@ -644,6 +685,9 @@
 				F33AC79027F1FE010052DB97 /* VideoFooterView.swift in Sources */,
 				F30021F427EE558C00D4A9FD /* Helpers.swift in Sources */,
 				F37618B82819C67B00E07A70 /* SettingsRouter.swift in Sources */,
+				F33856C028762EB400F47F7F /* VimeoAPIClient.swift in Sources */,
+				F33856BE28762E2400F47F7F /* StaffPicksRequest.swift in Sources */,
+				F33856BC28762D9A00F47F7F /* VimeoRequest.swift in Sources */,
 				F3B9A72A2800B8A100E83A9C /* FavoritesView.swift in Sources */,
 				F300219127EE40DB00D4A9FD /* picksApp.swift in Sources */,
 				F33AC79927F208F50052DB97 /* VideoDetailsRouter.swift in Sources */,
@@ -818,6 +862,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -848,6 +893,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

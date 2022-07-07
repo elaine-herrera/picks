@@ -8,43 +8,17 @@
 import Combine
 import Foundation
 
-struct VimeoDataSource: DataSource {
+class VimeoDataSource<T: Codable> : DataSource {
     
-    func load(page: Int) -> AnyPublisher<ObservableState, Never> {
-        return Future<ObservableState, Never> { promise in
-            VimeoApi.shared.getStaffPicks(page: page){ result, error in
-                if error == nil {
-                    promise(.success((.loaded(result))))
+    func load(request: VimeoRequest) -> AnyPublisher<ObservableState<T>, Never> {
+        return Future<ObservableState<T>, Never> { promise in
+            let client = VimeoAPIClient<T>()
+            client.load(request: request){ result, error in
+                guard let result = result else {
+                    promise(.success(.failed(error ?? ClientError.anyError)))
+                    return
                 }
-                else{
-                    promise(.success(.failed(error!)))
-                }
-          }
-        }.eraseToAnyPublisher()
-    }
-    
-    func search(query: String, page: Int) -> AnyPublisher<ObservableState, Never> {
-        return Future<ObservableState, Never> { promise in
-            VimeoApi.shared.search(query: query, page: page){ result, error in
-                if error == nil {
-                    promise(.success((.loaded(result))))
-                }
-                else{
-                    promise(.success(.failed(error!)))
-                }
-          }
-        }.eraseToAnyPublisher()
-    }
-    
-    func getCategories(page: Int) -> AnyPublisher<ObservableCategoryState, Never> {
-        return Future<ObservableCategoryState, Never> { promise in
-            VimeoApi.shared.getCategories(page: page){ result, error in
-                if error == nil {
-                    promise(.success((.loaded(result))))
-                }
-                else{
-                    promise(.success(.failed(error!)))
-                }
+                promise(.success((.loaded(result))))
           }
         }.eraseToAnyPublisher()
     }

@@ -9,14 +9,13 @@ import Combine
 import Foundation
 
 protocol DataSource{
-    func load(page: Int) -> AnyPublisher<ObservableState, Never>
-    func search(query: String, page: Int) -> AnyPublisher<ObservableState, Never>
-    func getCategories(page: Int) -> AnyPublisher<ObservableCategoryState, Never>
+    associatedtype T: Codable
+    func load(request: VimeoRequest) -> AnyPublisher<ObservableState<T>, Never>
 }
 
 protocol Persistence{
-    func load() -> AnyPublisher<ObservableState, Never>
-    func save(video: Video) -> AnyPublisher<ObservableState, Never>
-    func remove(video: Video) -> AnyPublisher<ObservableState, Never>
+    func load() -> AnyPublisher<ObservableState<[Video]>, Never>
+    func save(video: Video) -> AnyPublisher<ObservableState<[Video]>, Never>
+    func remove(video: Video) -> AnyPublisher<ObservableState<[Video]>, Never>
     func clear()
 }

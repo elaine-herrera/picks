@@ -7,18 +7,12 @@
 
 import Foundation
 
-enum ObservableState {
+enum ObservableState<T: Codable> {
     case idle
     case loading
+    case done
     case failed(Error)
-    case loaded([Video])
-}
-
-enum ObservableCategoryState {
-    case idle
-    case loading
-    case failed(Error)
-    case loaded([Category])
+    case loaded(T)
 }
 
 extension ObservableState: Equatable{
@@ -28,20 +22,7 @@ extension ObservableState: Equatable{
             return true
         case (.loading, .loading):
             return true
-        case (.failed(_), .failed(_)):
-            return true
-        default:
-            return false
-        }
-    }
-}
-
-extension ObservableCategoryState: Equatable{
-    static func == (lhs: ObservableCategoryState, rhs: ObservableCategoryState) -> Bool {
-        switch (lhs, rhs){
-        case (.idle, .idle):
-            return true
-        case (.loading, .loading):
+        case (.done, .done):
             return true
         case (.failed(_), .failed(_)):
             return true

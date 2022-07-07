@@ -217,7 +217,7 @@ extension VimeoApi {
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
-                let decodedData = try decoder.decode(VimeoResponseData.self, from: data!)
+                let decodedData = try decoder.decode(VimeoVideosResponseData.self, from: data!)
                 let videos = decodedData.data
                 completionHandler(videos, nil)
             }
@@ -245,7 +245,7 @@ extension VimeoApi {
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
-                let decodedData = try decoder.decode(VimeoCategoryResponseData.self, from: data!)
+                let decodedData = try decoder.decode(VimeoCategoriesResponseData.self, from: data!)
                 let categories = decodedData.data
                 completionHandler(categories, nil)
             }
