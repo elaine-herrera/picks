@@ -30,20 +30,28 @@ final class VimeoAPIClient<T: Codable>{
         
         session.dataTask(with: encodedURLRequest){data, response, error in
             guard
-                let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
+                let httpResponse = response as? HTTPURLResponse,
                 let data = data
-            else {
-                completionHandler(nil, nil)
+            else{
+                completionHandler(nil, ClientError.anyError)
                 return
             }
-            do {
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                let decodedData = try decoder.decode(T.self, from: data)
-                completionHandler(decodedData, nil)
+            if httpResponse.statusCode == 200 {
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    let decodedData = try decoder.decode(T.self, from: data)
+                    completionHandler(decodedData, nil)
+                }
+                catch let parseError {
+                    completionHandler(nil, parseError)
+                }
             }
-            catch let parseError {
-                completionHandler(nil, parseError)
+            else if httpResponse.statusCode == 429 {
+                completionHandler(nil, ClientError.appSurpassedRateLimit)
+            }
+            else {
+                completionHandler(nil, ClientError.invalidServerResponse)
             }
         }.resume()
     }
